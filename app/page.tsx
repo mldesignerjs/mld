@@ -84,59 +84,34 @@ export default function Home() {
                 </div>
             </div>
             <div className="flex w-full flex-wrap flex-col mt-6">
-                {umbrellaSize === '30'
-                    ? engraveFonts.map((font, key) => (
-                          <div
-                              key={key}
-                              style={font.style}
-                              className="w-auto flex items-center justify-center pr-6 pb-4"
-                          >
-                              <span className="flex items-center justify-center text-xl pr-6">{key + 1}</span>
-                              <div
-                                  className="flex items-center w-full h-[7cm] overflow-hidden text-center leading-normal"
-                                  style={{
-                                      backgroundImage: 'url(can-cn.jpg)',
-                                      backgroundSize: 'auto 100%',
-                                      backgroundRepeat: 'no-repeat',
-                                  }}
-                              >
-                                  <span
-                                      className="engrave cn flex items-center justify-center w-[12cm] ml-[3cm] h-[15mm] whitespace-nowrap overflow-hidden text-center leading-normal"
-                                      style={{
-                                          fontSize: `${fontSize}px`,
-                                      }}
-                                  >
-                                      {text}
-                                  </span>
-                              </div>
-                          </div>
-                      ))
-                    : engraveFonts.map((font, key) => (
-                          <div
-                              key={key}
-                              style={font.style}
-                              className="w-auto flex items-center justify-center pr-6 pb-4"
-                          >
-                              <span className="flex items-center justify-center text-xl pr-6">{key + 1}</span>
-                              <div
-                                  className="flex items-center w-full h-[6cm] overflow-hidden text-center leading-normal"
-                                  style={{
-                                      backgroundImage: 'url(chagoi-den.jpg)',
-                                      backgroundSize: 'auto 100%',
-                                      backgroundRepeat: 'no-repeat',
-                                  }}
-                              >
-                                  <span
-                                      className="engrave tm flex items-center justify-center w-[8cm] ml-[3cm] h-[15mm] whitespace-nowrap overflow-hidden text-center leading-normal"
-                                      style={{
-                                          fontSize: `${fontSize}px`,
-                                      }}
-                                  >
-                                      {text}
-                                  </span>
-                              </div>
-                          </div>
-                      ))}
+                      {
+                        engraveFonts.map((font, key) => (
+                            <div
+                                key={key}
+                                style={font.style}
+                                className="w-auto flex items-center justify-center pr-6 pb-4"
+                            >
+                                <span className="flex items-center justify-center text-xl pr-6">{key + 1}</span>
+                                <div
+                                    className={`flex items-center w-full overflow-hidden text-center leading-normal ${umbrellaSize === '30' ? 'h-[8cm]': 'h-[6cm]'}`}
+                                    style={{
+                                        backgroundImage: `url(${umbrellaSize === '30' ? 'can-cn' : 'chagoi-den'}.jpg)`,
+                                        backgroundSize: 'auto 100%',
+                                        backgroundRepeat: 'no-repeat',
+                                    }}
+                                >
+                                    <span
+                                        className={`engrave flex items-center justify-center whitespace-nowrap overflow-hidden text-center leading-normal ml-[3cm] h-[15mm] ${umbrellaSize === '30' ? 'w-[12cm] cn' : 'w-[8cm] tm'}`}
+                                        style={{
+                                            fontSize: `${fontSize}px`,
+                                        }}
+                                    >
+                                        {text}
+                                    </span>
+                                </div>
+                            </div>
+                        ))
+                      }
             </div>
         </main>
     )
