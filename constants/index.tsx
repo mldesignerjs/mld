@@ -28,33 +28,48 @@ const geotica = localFont({ src: '../fonts/UVF Geotica 2012.ttf' })
 const ginga = localFont({ src: '../fonts/UVF ginga.ttf' })
 const haymaker = localFont({ src: '../fonts/UVF Haymaker.ttf' })
 
+const font01 = localFont({src: '../fonts/fonts-convert/font01.ttf'})
+const font02 = localFont({src: '../fonts/fonts-convert/font02.ttf'})
+const font03 = localFont({src: '../fonts/fonts-convert/font03.ttf'})
+const font04 = localFont({src: '../fonts/fonts-convert/font04.ttf'})
+const font05 = localFont({src: '../fonts/fonts-convert/font05.ttf'})
+const font06 = localFont({src: '../fonts/fonts-convert/font06.ttf'})
+const font07 = localFont({src: '../fonts/fonts-convert/font07.ttf'})
+const font08 = localFont({src: '../fonts/fonts-convert/font08.ttf'})
+const font09 = localFont({src: '../fonts/fonts-convert/font09.ttf'})
+const font10 = localFont({src: '../fonts/fonts-convert/font10.ttf'})
+const font11 = localFont({src: '../fonts/fonts-convert/font11.ttf'})
+const font12 = localFont({src: '../fonts/fonts-convert/font12.ttf'})
+const font13 = localFont({src: '../fonts/fonts-convert/font13.ttf'})
+const font14 = localFont({src: '../fonts/fonts-convert/font14.otf'})
+const font15 = localFont({src: '../fonts/fonts-convert/font15.ttf'})
+const font16 = localFont({src: '../fonts/fonts-convert/font16.otf'})
+const font17 = localFont({src: '../fonts/fonts-convert/font17.ttf'})
+const font18 = localFont({src: '../fonts/fonts-convert/font18.ttf'})
+const font19 = localFont({src: '../fonts/fonts-convert/font19.ttf'})
+const font20 = localFont({src: '../fonts/fonts-convert/font20.ttf'})
+
 export const engraveFonts = [
-    aristote,
-    avo,
-    sofia,
-    student,
-    square,
-    charming,
-    abrilFatface,
-    aireRoman,
-    angelicWar,
-    aphroditePro,
-    aquus,
-    assassin,
-    barmbrack,
-    bleedingCowboys,
-    buttermilkScript,
-    centeria,
-    championScriptPro,
-    chikita,
-    chops,
-    ciderSript,
-    daddysGirl,
-    didotLt,
-    fiolexGirl,
-    geotica,
-    ginga,
-    haymaker,
+    font01,
+    font02,
+    font03,
+    font04,
+    font05,
+    font06,
+    font07,
+    font08,
+    font09,
+    font10,
+    font11,
+    font12,
+    font13,
+    font14,
+    font15,
+    font16,
+    font17,
+    font18,
+    font19,
+    font20,
 ]
 
 export const NavLinks = [
