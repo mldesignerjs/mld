@@ -1,26 +1,39 @@
 'use client'
 import { engraveFonts, kindHandle, umbrellas } from '@/constants'
+import { type } from 'os'
 import { useState } from 'react'
 
 export default function Home() {
-    const [text, setText] = useState('Your name')
-    const [fontSize, setFontSize] = useState('24')
-    const [umbrella, setUmbrella] = useState(umbrellas[0])
-    const [kindWood, setKindWood] = useState(umbrella.handle[0])
+    type handleO = {value: string, urlImg: string, id: number}
+    type umbrellaO = {
+        id: number,
+        name: string,
+        sizeHandle: number,
+        handle: handleO[]
+    }
+    const [text, setText] = useState<string>('Your name')
+    const [fontSize, setFontSize] = useState<string>('24')
+    const [currentUmbrella, setCurrentUmbrella] = useState<umbrellaO>(umbrellas[0])
+    const [handle, setHandle] = useState<handleO>(umbrellas[0].handle[0])
+
     function handleChangeContent(text: string) {
         setText(text)
     }
+
     function handleChangeFontSize(number: string) {
         setFontSize(number)
     }
+
     function handleChangeUmbrella(id: string) {
-        const index = Number(id)
-        const u = umbrellas.find((u) => u.id === index)
-        setUmbrella(u)
-        setKindWood(u?.handle[0])
+        const index: number = Number(id)
+        let nextUmbrella: any = umbrellas.find((umbrella) => umbrella.id === index)
+        setCurrentUmbrella(nextUmbrella)
+        setHandle(nextUmbrella.handle[0])
     }
+
     function handleChangeKindWood(kind: string) {
-        setKindWood(umbrella.handle.find((u) => u.value === kind))
+        const nextHandle: any = currentUmbrella?.handle.find((umbrella) => umbrella.value === kind)
+        setHandle(nextHandle)
     }
 
     return (
@@ -30,25 +43,27 @@ export default function Home() {
             </h2>
             <div className="fixed top-1/2 right-0 rounded w-[300px] bg-white shadow p-5">
                 <div className="flex items-center justify-center pb-6">
-                    <label className="pr-6" htmlFor="">
+                    <label className="pr-6" htmlFor="contentEngrave">
                         Nội dung:
                     </label>
                     <input
                         type="text"
-                        name=""
+                        name="contentEngrave"
+                        id="contentEngrave"
                         className="py-2 px-4 rounded w-[150px]"
                         placeholder="Nhập nội dung bạn muốn khắc"
                         onChange={(e) => handleChangeContent(e.target.value)}
                     />
                 </div>
                 <div className="flex items-center ">
-                    <label className="pr-6" htmlFor="">
+                    <label className="pr-6" htmlFor="sizeEngrave">
                         Kích cỡ:
                     </label>
                     <div>
                         <input
                             type="number"
-                            name=""
+                            name="sizeEngrave"
+                            id="sizeEngrave"
                             className="py-2 px-4 rounded"
                             placeholder=""
                             value={fontSize}
@@ -58,7 +73,7 @@ export default function Home() {
                         />
                         <input
                             type="range"
-                            name="vol"
+                            name="sizeEngrave"
                             className="py-2 rounded"
                             placeholder=""
                             value={fontSize}
@@ -69,35 +84,37 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="flex items-center ">
-                    <label className="pr-6" htmlFor="">
+                    <label className="pr-6" htmlFor="umbrella">
                         Loại ô:
                     </label>
 
                     <select
                         className="py-2 px-4 rounded"
-                        id="floatingSelect"
-                        value={umbrella.id}
+                        id="umbrella"
+                        name='umbrella'
+                        value={currentUmbrella.id}
                         onChange={(e) => handleChangeUmbrella(e.target.value)}
                     >
-                        {umbrellas.map((umbrell) => (
-                            <option key={umbrell.id} value={umbrell.id}>
-                                {umbrell.name}
+                        {umbrellas.map((umbrella) => (
+                            <option key={umbrella.id} value={umbrella.id}>
+                                {umbrella.name}
                             </option>
                         ))}
                     </select>
                 </div>
                 <div className="flex items-center ">
-                    <label className="pr-6" htmlFor="">
+                    <label className="pr-6" htmlFor="handle">
                         Loại gỗ:
                     </label>
 
                     <select
                         className="py-2 px-4 rounded"
-                        id="floatingSelect"
-                        value={kindWood.value}
+                        id="handle"
+                        name='handle'
+                        value={handle?.value}
                         onChange={(e) => handleChangeKindWood(e.target.value)}
                     >
-                        {umbrella.handle.map((handle) => (
+                        {currentUmbrella.handle.map((handle) => (
                             <option key={handle.id} value={handle.value}>
                                 {kindHandle.find((wood) => wood.value === handle.value)?.name}
                             </option>
@@ -117,14 +134,14 @@ export default function Home() {
                         <div
                             className="flex items-center w-full overflow-hidden text-center leading-normal h-[7cm]"
                             style={{
-                                backgroundImage: `url(${kindWood.urlImg})`,
+                                backgroundImage: `url(${handle.urlImg})`,
                                 backgroundSize: 'auto 100%',
                                 backgroundRepeat: 'no-repeat',
                             }}
                         >
                             <span
-                                className={`engrave flex items-center justify-center whitespace-nowrap overflow-hidden text-center leading-normal ml-[3cm] h-[15mm] ${kindWood.value}`}
-                                style={{width:  `${umbrella.sizeHandle}cm`}}
+                                className={`engrave flex items-center justify-center whitespace-nowrap overflow-hidden text-center leading-normal ml-[3cm] h-[15mm] ${handle.value}`}
+                                style={{width:  `${currentUmbrella.sizeHandle}cm`}}
                             >
                                 {text}
                             </span>

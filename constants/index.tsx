@@ -1,4 +1,5 @@
 import localFont from 'next/font/local'
+import { type } from 'os'
 
 const font01 = localFont({src: '../fonts/fonts-convert/font01.ttf'})
 const font02 = localFont({src: '../fonts/fonts-convert/font02.ttf'})
@@ -50,36 +51,36 @@ export const NavLinks = [
         key: 'Home',
         text: 'Home',
     },
-    {
-        href: '/about',
-        key: 'About',
-        text: 'About',
-    },
-    {
-        href: '/services',
-        key: 'Services',
-        text: 'Services',
-    },
+    // {
+    //     href: '/about',
+    //     key: 'About',
+    //     text: 'About',
+    // },
+    // {
+    //     href: '/services',
+    //     key: 'Services',
+    //     text: 'Services',
+    // },
     {
         href: '/engrave',
         key: 'Engrave',
         text: 'Engrave',
     },
-    {
-        href: '/portfolio',
-        key: 'Portfolio',
-        text: 'Portfolio',
-    },
-    {
-        href: '/news',
-        key: 'News',
-        text: 'News',
-    },
-    {
-        href: '/contact',
-        key: 'Contact',
-        text: 'Contact',
-    },
+    // {
+    //     href: '/portfolio',
+    //     key: 'Portfolio',
+    //     text: 'Portfolio',
+    // },
+    // {
+    //     href: '/news',
+    //     key: 'News',
+    //     text: 'News',
+    // },
+    // {
+    //     href: '/contact',
+    //     key: 'Contact',
+    //     text: 'Contact',
+    // },
 ]
 
 export const sizeHandle = [
@@ -104,12 +105,24 @@ export const kindHandle = [
     },
 ]
 
-export const umbrellas = [
+
+    type handleO = {value: string, urlImg: string, id: number}
+    type handleA = handleO[]
+    type umbrellaO = {
+        id: number,
+        name: string,
+        sizeHandle: number,
+        handle: handleA,
+    }
+    type umbrellaA = umbrellaO[]
+    
+
+export const umbrellas: umbrellaA = [
     {
         id: 0,
         name: 'Chagoi',
         sizeHandle: 8,
-        handle: [{ value: 'tm', urlImg: 'chagoi-den.jpg', id: 0, }],
+        handle: [{ value: 'tm', urlImg: 'chagoi-den.jpg', id: 0, },],
     },
     {
         id: 1,
