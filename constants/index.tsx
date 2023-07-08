@@ -1,33 +1,5 @@
 import localFont from 'next/font/local'
 
-const aristote = localFont({ src: '../fonts/UTM Aristote.ttf' })
-const avo = localFont({ src: '../fonts/UTM Avo.ttf' })
-const sofia = localFont({ src: '../fonts/SVN-Sofia.ttf' })
-const student = localFont({ src: '../fonts/SVN-Student.ttf' })
-const square = localFont({ src: '../fonts/SVN-Square.ttf' })
-
-const charming = localFont({ src: '../fonts/UVF A Charming Expanded.ttf' })
-const abrilFatface = localFont({ src: '../fonts/UVF AbrilFatface Regular.ttf' })
-const aireRoman = localFont({ src: '../fonts/UVF Aire Roman Std.ttf' })
-const angelicWar = localFont({ src: '../fonts/UVF Angelic War.ttf' })
-const aphroditePro = localFont({ src: '../fonts/UVF Aphrodite Pro.ttf' })
-const aquus = localFont({ src: '../fonts/UVF AQUUS-Regular.ttf' })
-const assassin = localFont({ src: '../fonts/UVF Assassin.ttf' })
-const barmbrack = localFont({ src: '../fonts/UVF Barmbrack.ttf' })
-const bleedingCowboys = localFont({ src: '../fonts/UVF Bleeding Cowboys.ttf' })
-const buttermilkScript = localFont({ src: '../fonts/UVF Buttermilk Script.ttf' })
-const centeria = localFont({ src: '../fonts/UVF Centeria.ttf' })
-const championScriptPro = localFont({ src: '../fonts/UVF Champion Script Pro.ttf' })
-const chikita = localFont({ src: '../fonts/UVF Chikita.ttf' })
-const chops = localFont({ src: '../fonts/UVF Chops Normal.ttf' })
-const ciderSript = localFont({ src: '../fonts/UVF Cider Script.ttf' })
-const daddysGirl = localFont({ src: '../fonts/UVF Daddys Girl.ttf' })
-const didotLt = localFont({ src: '../fonts/UVF Didot LT Std.ttf' })
-const fiolexGirl = localFont({ src: '../fonts/UVF FiolexGirlVH.ttf' })
-const geotica = localFont({ src: '../fonts/UVF Geotica 2012.ttf' })
-const ginga = localFont({ src: '../fonts/UVF ginga.ttf' })
-const haymaker = localFont({ src: '../fonts/UVF Haymaker.ttf' })
-
 const font01 = localFont({src: '../fonts/fonts-convert/font01.ttf'})
 const font02 = localFont({src: '../fonts/fonts-convert/font02.ttf'})
 const font03 = localFont({src: '../fonts/fonts-convert/font03.ttf'})
@@ -89,6 +61,11 @@ export const NavLinks = [
         text: 'Services',
     },
     {
+        href: '/engrave',
+        key: 'Engrave',
+        text: 'Engrave',
+    },
+    {
         href: '/portfolio',
         key: 'Portfolio',
         text: 'Portfolio',
@@ -102,5 +79,54 @@ export const NavLinks = [
         href: '/contact',
         key: 'Contact',
         text: 'Contact',
+    },
+]
+
+export const sizeHandle = [
+    {
+        name: '8 cm',
+        value: 8,
+    },
+    {
+        name: '12 cm',
+        value: 12,
+    },
+]
+
+export const kindHandle = [
+    {
+        name: 'CN',
+        value: 'cn',
+    },
+    {
+        name: 'Trắc/Mun',
+        value: 'tm',
+    },
+]
+
+export const umbrellas = [
+    {
+        id: 0,
+        name: 'Chagoi',
+        sizeHandle: 8,
+        handle: [{ value: 'tm', urlImg: 'chagoi-den.jpg', id: 0, }],
+    },
+    {
+        id: 1,
+        name: 'G27',
+        sizeHandle: 12,
+        handle: [
+            { value: 'cn', urlImg: 'g27-cn.jpg', id: 0, },
+            { value: 'tm', urlImg: 'g27-trac.jpg', id: 1, },
+        ],
+    },
+    {
+        id: 2,
+        name: 'G30',
+        sizeHandle: 12,
+        handle: [
+            { value: 'cn', urlImg: 'g30-cn.jpg', id: 0, },
+            { value: 'tm', urlImg: 'g30-trac.jpg', id: 1, },
+        ],
     },
 ]
