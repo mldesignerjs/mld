@@ -1,20 +1,15 @@
 'use client'
-import { engraveFonts, kindHandle, umbrellas } from '@/constants'
-import { type } from 'os'
+import { engraveFonts, kindHandle, umbrellas, handleO, umbrellaO } from '@/constants'
+import { faCircleXmark, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 
 export default function Home() {
-    type handleO = {value: string, urlImg: string, id: number}
-    type umbrellaO = {
-        id: number,
-        name: string,
-        sizeHandle: number,
-        handle: handleO[]
-    }
     const [text, setText] = useState<string>('Your name')
     const [fontSize, setFontSize] = useState<string>('24')
     const [currentUmbrella, setCurrentUmbrella] = useState<umbrellaO>(umbrellas[0])
     const [handle, setHandle] = useState<handleO>(umbrellas[0].handle[0])
+    const [showEditMode, setShowEditMode] = useState<boolean>(true)
 
     function handleChangeContent(text: string) {
         setText(text)
@@ -35,91 +30,111 @@ export default function Home() {
         const nextHandle: any = currentUmbrella?.handle.find((umbrella) => umbrella.value === kind)
         setHandle(nextHandle)
     }
+    function handleShowEditMode() {
+        setShowEditMode(!showEditMode)
+    }
 
     return (
-        <main className="p-24">
+        <main className=" lg:px-24 max-lg:px-4 lg:pt-40 max-lg:pt-10">
             <h2 className="text-center text-5xl py-10" style={engraveFonts[4].style}>
                 Hãy chọn font, kích cỡ chữ để khắc tên lên tay cầm ô dù
             </h2>
-            <div className="fixed top-1/2 right-0 rounded w-[300px] bg-white shadow p-5">
-                <div className="flex items-center justify-center pb-6">
-                    <label className="pr-6" htmlFor="contentEngrave">
-                        Nội dung:
-                    </label>
-                    <input
-                        type="text"
-                        name="contentEngrave"
-                        id="contentEngrave"
-                        className="py-2 px-4 rounded w-[150px]"
-                        placeholder="Nhập nội dung bạn muốn khắc"
-                        onChange={(e) => handleChangeContent(e.target.value)}
-                    />
-                </div>
-                <div className="flex items-center ">
-                    <label className="pr-6" htmlFor="sizeEngrave">
-                        Kích cỡ:
-                    </label>
-                    <div>
-                        <input
-                            type="number"
-                            name="sizeEngrave"
-                            id="sizeEngrave"
-                            className="py-2 px-4 rounded"
-                            placeholder=""
-                            value={fontSize}
-                            max={50}
-                            min={10}
-                            onChange={(e) => handleChangeFontSize(e.target.value)}
-                        />
-                        <input
-                            type="range"
-                            name="sizeEngrave"
-                            className="py-2 rounded"
-                            placeholder=""
-                            value={fontSize}
-                            min={10}
-                            max={50}
-                            onChange={(e) => handleChangeFontSize(e.target.value)}
-                        />
+            <div className="fixed top-1/2 -translate-y-1/2 right-0">
+                <div
+                    className="overflow-hidden transition-all"
+                    style={{
+                        width: `${showEditMode ? '300px' : '50px'}`,
+                        height: `${showEditMode ? 'fit-content' : '50px'}`,
+                    }}
+                >
+                    <button className="w-[50px] h-[50px] bg-white rounded" onClick={handleShowEditMode}>
+                        {showEditMode ? (
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        ) : (
+                            <FontAwesomeIcon icon={faPenToSquare} />
+                        )}
+                    </button>
+                    <div className="rounded w-[300px] bg-white shadow p-5 ">
+                        <div className="flex items-center justify-center pt-10">
+                            <label className="pr-6" htmlFor="contentEngrave">
+                                Nội dung:
+                            </label>
+                            <input
+                                type="text"
+                                name="contentEngrave"
+                                id="contentEngrave"
+                                className="py-2 px-4 rounded w-[150px]"
+                                placeholder="Nhập nội dung bạn muốn khắc"
+                                onChange={(e) => handleChangeContent(e.target.value)}
+                            />
+                        </div>
+                        <div className="flex items-center ">
+                            <label className="pr-6" htmlFor="sizeEngrave">
+                                Kích cỡ:
+                            </label>
+                            <div>
+                                <input
+                                    type="number"
+                                    name="sizeEngrave"
+                                    id="sizeEngrave"
+                                    className="py-2 px-4 rounded"
+                                    placeholder=""
+                                    value={fontSize}
+                                    max={50}
+                                    min={10}
+                                    onChange={(e) => handleChangeFontSize(e.target.value)}
+                                />
+                                <input
+                                    type="range"
+                                    name="sizeEngrave"
+                                    className="py-2 rounded"
+                                    placeholder=""
+                                    value={fontSize}
+                                    min={10}
+                                    max={50}
+                                    onChange={(e) => handleChangeFontSize(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                        <div className="flex items-center ">
+                            <label className="pr-6" htmlFor="umbrella">
+                                Loại ô:
+                            </label>
+
+                            <select
+                                className="py-2 px-4 rounded"
+                                id="umbrella"
+                                name="umbrella"
+                                value={currentUmbrella.id}
+                                onChange={(e) => handleChangeUmbrella(e.target.value)}
+                            >
+                                {umbrellas.map((umbrella) => (
+                                    <option key={umbrella.id} value={umbrella.id}>
+                                        {umbrella.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="flex items-center ">
+                            <label className="pr-6" htmlFor="handle">
+                                Loại gỗ:
+                            </label>
+
+                            <select
+                                className="py-2 px-4 rounded"
+                                id="handle"
+                                name="handle"
+                                value={handle?.value}
+                                onChange={(e) => handleChangeKindWood(e.target.value)}
+                            >
+                                {currentUmbrella.handle.map((handle) => (
+                                    <option key={handle.id} value={handle.value}>
+                                        {kindHandle.find((wood) => wood.value === handle.value)?.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div className="flex items-center ">
-                    <label className="pr-6" htmlFor="umbrella">
-                        Loại ô:
-                    </label>
-
-                    <select
-                        className="py-2 px-4 rounded"
-                        id="umbrella"
-                        name='umbrella'
-                        value={currentUmbrella.id}
-                        onChange={(e) => handleChangeUmbrella(e.target.value)}
-                    >
-                        {umbrellas.map((umbrella) => (
-                            <option key={umbrella.id} value={umbrella.id}>
-                                {umbrella.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div className="flex items-center ">
-                    <label className="pr-6" htmlFor="handle">
-                        Loại gỗ:
-                    </label>
-
-                    <select
-                        className="py-2 px-4 rounded"
-                        id="handle"
-                        name='handle'
-                        value={handle?.value}
-                        onChange={(e) => handleChangeKindWood(e.target.value)}
-                    >
-                        {currentUmbrella.handle.map((handle) => (
-                            <option key={handle.id} value={handle.value}>
-                                {kindHandle.find((wood) => wood.value === handle.value)?.name}
-                            </option>
-                        ))}
-                    </select>
                 </div>
             </div>
             <div
@@ -141,7 +156,7 @@ export default function Home() {
                         >
                             <span
                                 className={`engrave flex items-center justify-center whitespace-nowrap overflow-hidden text-center leading-normal ml-[3cm] h-[15mm] ${handle.value}`}
-                                style={{width:  `${currentUmbrella.sizeHandle}cm`}}
+                                style={{ width: `${currentUmbrella.sizeHandle}cm` }}
                             >
                                 {text}
                             </span>
