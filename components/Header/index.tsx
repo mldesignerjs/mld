@@ -36,11 +36,11 @@ function Header(props: HeaderProps) {
                     {!isCloseMenu && (
                         <div
                             onClick={() => setIsCloseMenu(true)}
-                            className="w-screen h-screen bg-gray-600 opacity-50 absolute top-0 left-0 z-10"
+                            className="w-full h-full bg-gray-600 opacity-50 fixed top-0 left-0 z-10"
                         ></div>
                     )}
                     <div
-                        className={`transition-all lg:flex-wrap max-lg:flex-col lg:flex lg:w-5/6 lg:basis-auto lg:justify-end items-center max-lg:absolute max-lg:top-0 max-lg:left-0 max-lg:z-20 max-lg:w-1/2 bg-white max-lg:-translate-x-full max-lg:h-screen max-lg:basis-full ${
+                        className={`transition-all lg:flex-wrap max-lg:flex-col lg:flex lg:w-5/6 lg:basis-auto lg:justify-end items-center max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:z-20 max-lg:w-1/2 bg-white max-lg:-translate-x-full max-lg:h-full max-lg:basis-full ${
                             isCloseMenu ? '' : '!translate-x-0'
                         }`}
                     >

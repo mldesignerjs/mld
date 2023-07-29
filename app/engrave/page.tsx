@@ -35,7 +35,7 @@ export default function Home() {
     }
 
     return (
-        <main className=" lg:px-24 max-lg:px-4 lg:pt-40 max-lg:pt-10">
+        <div className=" lg:px-24 max-lg:px-4 lg:pt-40 max-lg:pt-10">
             <h2 className="text-center text-5xl py-10" style={engraveFonts[4].style}>
                 Hãy chọn font, kích cỡ chữ để khắc tên lên tay cầm ô dù
             </h2>
@@ -161,6 +161,6 @@ export default function Home() {
                     </div>
                 ))}
             </div>
-        </main>
+        </div>
     )
 }
