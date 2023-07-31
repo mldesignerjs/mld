@@ -46,7 +46,7 @@ export default function Home() {
                 {showEditMode ? <FontAwesomeIcon icon={faCircleXmark} /> : <FontAwesomeIcon icon={faPenToSquare} />}
             </button>
             <div
-                className="fixed top-1/2 -translate-y-1/2 right-0 overflow-hidden transition-all rounded bg-white shadow border"
+                className="fixed top-1/2 -translate-y-1/2 right-0 z-20 overflow-hidden transition-all rounded bg-white shadow border"
                 style={{
                     width: `${showEditMode ? '350px' : '0'}`,
                     // height: `${showEditMode ? 'fit-content' : '0'}`,
@@ -135,14 +135,14 @@ export default function Home() {
                 </div>
             </div>
             <div
-                className="flex w-full flex-wrap flex-col mt-6"
+                className="mt-6"
                 style={{
                     fontSize: `${fontSize}px`,
                 }}
             >
                 {engraveFonts.map((font, key) => (
-                    <div key={key} style={font.style} className="w-auto flex items-center justify-center pr-6 pb-4">
-                        <span className="flex items-center justify-center text-xl pr-6">{key + 1}</span>
+                    <div key={key} style={font.style} className="w-full overflow-hidden justify-center pb-6 relative">
+                        <span className="text-xl absolute top-4 left-1/2 -translate-x-1/2">{key + 1}</span>
                         <div
                             className="flex items-center w-full overflow-hidden text-center leading-normal h-[7cm]"
                             style={{

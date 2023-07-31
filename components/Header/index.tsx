@@ -21,14 +21,14 @@ function Header(props: HeaderProps) {
                 <div className="flex flex-wrap items-center justify-between">
                     <Link
                         href="/"
-                        className={`transition-all delay-100 w-1/6 flex items-center justify-center text-main text-2xl font-black ${
+                        className={`transition-all delay-100 w-1/6 flex items-center text-main text-2xl font-black ${
                             isCloseMenu ? 'translate-x-0' : '-translate-x-[300px]'
                         }`}
                     >
                         {nameSite}
                     </Link>
                     <button
-                        className="md: block lg:hidden z-30 w-8 h-8 rounded text-white bg-main"
+                        className="md:block lg:hidden z-30 w-8 h-8 rounded text-white bg-main"
                         onClick={handleCloseMenu}
                     >
                         {isCloseMenu ? <FontAwesomeIcon icon={faBars} /> : <FontAwesomeIcon icon={faXmark} />}
@@ -40,7 +40,7 @@ function Header(props: HeaderProps) {
                         ></div>
                     )}
                     <div
-                        className={`transition-all lg:flex-wrap max-lg:flex-col lg:flex lg:w-5/6 lg:basis-auto lg:justify-end items-center max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:z-20 max-lg:w-1/2 bg-white max-lg:-translate-x-full max-lg:h-full max-lg:basis-full ${
+                        className={`transition-all lg:flex-wrap max-lg:flex-col lg:flex lg:w-5/6 lg:basis-auto lg:justify-end items-center max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:z-20 max-lg:w-2/3 bg-white max-lg:-translate-x-full max-lg:h-full max-lg:basis-full ${
                             isCloseMenu ? '' : '!translate-x-0'
                         }`}
                     >
