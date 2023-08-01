@@ -30,13 +30,14 @@ export default function Home() {
         const nextHandle: any = currentUmbrella?.handle.find((umbrella) => umbrella.value === kind)
         setHandle(nextHandle)
     }
+
     function handleShowEditMode() {
         setShowEditMode(!showEditMode)
     }
 
     return (
         <div className=" lg:px-24 max-lg:px-4 lg:pt-40 max-lg:pt-10">
-            <h2 className="text-center text-5xl py-10" style={engraveFonts[4].style}>
+            <h2 className="text-center text-5xl py-10" style={engraveFonts[9].style}>
                 Hãy chọn font, kích cỡ chữ để khắc tên lên tay cầm ô dù
             </h2>
             <button
@@ -47,10 +48,7 @@ export default function Home() {
             </button>
             <div
                 className="fixed top-1/2 -translate-y-1/2 right-0 z-20 overflow-hidden transition-all rounded bg-white shadow border"
-                style={{
-                    width: `${showEditMode ? '350px' : '0'}`,
-                    // height: `${showEditMode ? 'fit-content' : '0'}`,
-                }}
+                style={{ width: `${showEditMode ? '350px' : '0'}` }}
             >
                 <div className="p-5">
                     <div className="flex items-center pb-4">
@@ -142,21 +140,17 @@ export default function Home() {
             >
                 {engraveFonts.map((font, key) => (
                     <div key={key} style={font.style} className="w-full overflow-hidden justify-center pb-6 relative">
-                        <span className="text-xl absolute top-4 left-1/2 -translate-x-1/2">{key + 1}</span>
-                        <div
-                            className="flex items-center w-full overflow-hidden text-center leading-normal h-[7cm]"
-                            style={{
-                                backgroundImage: `url(${handle.urlImg})`,
-                                backgroundSize: 'auto 100%',
-                                backgroundRepeat: 'no-repeat',
-                            }}
-                        >
-                            <span
-                                className={`engrave flex items-center justify-center whitespace-nowrap overflow-hidden text-center leading-normal ml-[3cm] h-[15mm] ${handle.value}`}
-                                style={{ width: `${currentUmbrella.sizeHandle}cm` }}
-                            >
-                                {text}
-                            </span>
+                        <span className="text-xl absolute top-4 left-1/2 z-10 -translate-x-1/2">{key + 1}</span>
+                        <div className="flex items-center w-full overflow-hidden text-center leading-normal h-[7cm]">
+                            <div className="relative origin-top-left max-sm:scale-50 max-md:scale-75">
+                                <img src={handle.urlImg} alt="" className="h-[7cm] w-max min-w-max" />
+                                <span
+                                    className={`engrave absolute top-1/2 -translate-y-1/2 left-[3cm] whitespace-nowrap overflow-hidden text-center leading-[15mm] h-[15mm] ${handle.value}`}
+                                    style={{ width: `${currentUmbrella.sizeHandle}cm` }}
+                                >
+                                    {text}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 ))}
