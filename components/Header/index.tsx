@@ -67,7 +67,7 @@ function Header(props: HeaderProps) {
                         </ul>
                         <ul className="transition-all flex basis-full max-lg:justify-center lg:justify-end">
                             {listSocialMediaLink.map((socialMediaLink) => (
-                                <li className="">
+                                <li className="" key={socialMediaLink.src}>
                                     <Link
                                         key={socialMediaLink.src}
                                         href={socialMediaLink.src}
