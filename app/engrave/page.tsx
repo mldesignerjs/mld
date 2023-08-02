@@ -141,11 +141,15 @@ export default function Home() {
                 {engraveFonts.map((font, key) => (
                     <div key={key} style={font.style} className="w-full overflow-hidden justify-center pb-6 relative">
                         <span className="text-xl absolute top-4 left-1/2 z-10 -translate-x-1/2">{key + 1}</span>
-                        <div className="flex items-center w-full overflow-hidden text-center leading-normal h-[7cm]">
-                            <div className="relative origin-top-left max-sm:scale-50 max-md:scale-75">
-                                <img src={handle.urlImg} alt="" className="h-[7cm] w-max min-w-max" />
+                        <div className="flex items-center w-full overflow-hidden text-center leading-normal">
+                            <div className="relative">
+                                <img
+                                    src={handle.urlImg}
+                                    alt=""
+                                    className="max-sm:h-[35mm] md:h-[52.5mm] lg:h-[7cm] w-max min-w-max"
+                                />
                                 <span
-                                    className={`engrave absolute top-1/2 -translate-y-1/2 left-[3cm] whitespace-nowrap overflow-hidden text-center leading-[15mm] h-[15mm] ${handle.value}`}
+                                    className={`engrave absolute top-1/2 -translate-y-1/2 origin-left max-sm:scale-50 max-lg:scale-75 max-sm:left-[15mm] max-lg:left-[22.5mm] lg:left-[3cm] whitespace-nowrap overflow-hidden text-center leading-[15mm] h-[15mm] ${handle.value}`}
                                     style={{ width: `${currentUmbrella.sizeHandle}cm` }}
                                 >
                                     {text}
