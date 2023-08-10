@@ -1,12 +1,13 @@
 'use client'
 import { engraveFonts, kindHandle, umbrellas, handleO, umbrellaO } from '@/constants'
 import { faCircleXmark, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 
 export default function Home() {
     const [text, setText] = useState<string>('Your name')
-    const [fontSize, setFontSize] = useState<string>('24')
+    const [fontSize, setFontSize] = useState<string>('28')
     const [currentUmbrella, setCurrentUmbrella] = useState<umbrellaO>(umbrellas[0])
     const [handle, setHandle] = useState<handleO>(umbrellas[0].handle[0])
     const [showEditMode, setShowEditMode] = useState<boolean>(true)
@@ -140,7 +141,9 @@ export default function Home() {
             >
                 {engraveFonts.map((font, key) => (
                     <div key={key} style={font.style} className="w-full overflow-hidden justify-center pb-6 relative">
-                        <span className="text-xl absolute top-4 left-1/2 z-10 -translate-x-1/2">{key + 1}</span>
+                        <span className="max-sm:text-sm text-xl absolute max-sm:top-2 max-sm:left-2 top-4 left-4 z-10 flex max-sm:w-5 max-sm:h-5 w-10 h-10 rounded-full bg-main text-white justify-center items-center">
+                            {key + 1}
+                        </span>
                         <div className="flex items-center w-full overflow-hidden text-center leading-normal">
                             <div className="relative">
                                 <img
