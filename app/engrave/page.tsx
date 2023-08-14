@@ -8,6 +8,7 @@ import { useState } from 'react'
 export default function Home() {
     const [text, setText] = useState<string>('Your name')
     const [fontSize, setFontSize] = useState<string>('28')
+    const [letterSpacing, setLetterSpacing] = useState<string>('0')
     const [currentUmbrella, setCurrentUmbrella] = useState<umbrellaO>(umbrellas[0])
     const [handle, setHandle] = useState<handleO>(umbrellas[0].handle[0])
     const [showEditMode, setShowEditMode] = useState<boolean>(true)
@@ -18,6 +19,10 @@ export default function Home() {
 
     function handleChangeFontSize(number: string) {
         setFontSize(number)
+    }
+
+    function handleChangeLetterSpacing(number: string) {
+        setLetterSpacing(number)
     }
 
     function handleChangeUmbrella(id: string) {
@@ -94,6 +99,34 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="flex items-center pb-4">
+                        <label className="pr-6" htmlFor="letterSpacing">
+                            Khoảng cách chữ:
+                        </label>
+                        <div>
+                            <input
+                                type="number"
+                                name="letterSpacing"
+                                id="letterSpacing"
+                                className="py-2 px-4 rounded"
+                                placeholder=""
+                                value={letterSpacing}
+                                max={10}
+                                min={0}
+                                onChange={(e) => handleChangeLetterSpacing(e.target.value)}
+                            />
+                            <input
+                                type="range"
+                                name="letterSpacing"
+                                className="py-2 rounded"
+                                placeholder=""
+                                value={letterSpacing}
+                                min={0}
+                                max={10}
+                                onChange={(e) => handleChangeLetterSpacing(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                    <div className="flex items-center pb-4">
                         <label className="pr-6" htmlFor="umbrella">
                             Loại ô:
                         </label>
@@ -153,7 +186,10 @@ export default function Home() {
                                 />
                                 <span
                                     className={`engrave absolute top-1/2 -translate-y-1/2 origin-left max-sm:scale-50 max-lg:scale-75 max-sm:left-[15mm] max-lg:left-[22.5mm] lg:left-[3cm] whitespace-nowrap overflow-hidden text-center leading-[15mm] h-[15mm] ${handle.value}`}
-                                    style={{ width: `${currentUmbrella.sizeHandle}cm` }}
+                                    style={{
+                                        width: `${currentUmbrella.sizeHandle}cm`,
+                                        letterSpacing: `${letterSpacing}px`,
+                                    }}
                                 >
                                     {text}
                                 </span>
