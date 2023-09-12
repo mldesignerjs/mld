@@ -43,7 +43,7 @@ export default function Home() {
 
     return (
         <div className=" lg:px-24 max-lg:px-4 lg:pt-40 max-lg:pt-10">
-            <h2 className="text-center text-5xl py-10" style={engraveFonts[9].style}>
+            <h2 className="text-center text-5xl py-10" style={engraveFonts[10].style}>
                 Hãy chọn font, kích cỡ chữ để khắc tên lên tay cầm ô dù
             </h2>
             <button
@@ -169,7 +169,7 @@ export default function Home() {
             <div
                 className="mt-6"
                 style={{
-                    fontSize: `${fontSize}px`,
+                    fontSize: `${fontSize}pt`,
                 }}
             >
                 {engraveFonts.map((font, key) => (
@@ -185,7 +185,7 @@ export default function Home() {
                                     className="max-sm:h-[35mm] md:h-[52.5mm] lg:h-[7cm] w-max min-w-max"
                                 />
                                 <span
-                                    className={`engrave absolute top-1/2 -translate-y-1/2 origin-left max-sm:scale-50 max-lg:scale-75 max-sm:left-[15mm] max-lg:left-[22.5mm] lg:left-[3cm] whitespace-nowrap overflow-hidden text-center leading-[15mm] h-[15mm] ${handle.value}`}
+                                    className={`engrave absolute top-1/2 -translate-y-1/2 origin-left max-sm:scale-50 max-lg:scale-75 max-sm:left-[15mm] max-lg:left-[22.5mm] lg:left-[3cm] whitespace-nowrap overflow-hidden text-center h-[15mm] flex items-center justify-center ${handle.value}`}
                                     style={{
                                         width: `${currentUmbrella.sizeHandle}cm`,
                                         letterSpacing: `${letterSpacing}px`,
