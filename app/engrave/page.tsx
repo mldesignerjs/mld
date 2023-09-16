@@ -1,6 +1,6 @@
 'use client'
 import { engraveFonts, kindHandle, umbrellas, handleO, umbrellaO } from '@/constants'
-import { faCircleXmark, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck, faCircleXmark, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
@@ -14,11 +14,11 @@ export default function Home() {
     const [showEditMode, setShowEditMode] = useState<boolean>(true)
 
     const [text1, setText1] = useState<string>('Tên Của Bạn')
-    const [fontSize1, setFontSize1] = useState<string>('28')
+    const [fontSize1, setFontSize1] = useState<string>('22')
     const [letterSpacing1, setLetterSpacing1] = useState<string>('0')
 
     const [text2, setText2] = useState<string>('Tên Của Bạn')
-    const [fontSize2, setFontSize2] = useState<string>('28')
+    const [fontSize2, setFontSize2] = useState<string>('22')
     const [letterSpacing2, setLetterSpacing2] = useState<string>('0')
 
     function handleChangeLineNumber(value: string) {
@@ -75,48 +75,62 @@ export default function Home() {
                 Hãy chọn font, kích cỡ chữ để khắc tên lên tay cầm ô dù
             </h2>
             <button
-                className="fixed top-[18%] right-0 z-30 w-[50px] h-[50px] bg-white rounded border"
+                className="fixed top-[18%] right-0 z-30 w-[50px] h-[50px] bg-white rounded border text-xl"
                 onClick={handleShowEditMode}
             >
-                {showEditMode ? <FontAwesomeIcon icon={faCircleXmark} /> : <FontAwesomeIcon icon={faPenToSquare} />}
+                {showEditMode ? (
+                    <FontAwesomeIcon className="text-red-400" icon={faCircleXmark} />
+                ) : (
+                    <FontAwesomeIcon className="text-blue-400" icon={faPenToSquare} />
+                )}
             </button>
             <div
                 className="fixed top-[18%] right-0 z-20 overflow-y-scroll transition-all rounded bg-white shadow border max-h-[50%]"
                 style={{ width: `${showEditMode ? '350px' : '0'}` }}
             >
                 <div className="p-4">
-                    <div className="flex items-center">
-                        <p className="pr-6">Số dòng chữ:</p>
-                        <div className="pr-5">
+                    <p className="pr-6">Số dòng chữ:</p>
+                    <div className="flex items-center my-4">
+                        <label className="cursor-pointer mr-6" htmlFor="lineNumber1">
                             <input
-                                className=""
                                 type="radio"
-                                name="flexRadioDefault"
-                                id="flexRadioDefault1"
+                                className="peer sr-only"
+                                name="lineNumber"
+                                id="lineNumber1"
                                 value="1"
                                 checked={lineNumber === '1'}
                                 onChange={(e) => handleChangeLineNumber(e.target.value)}
                             />
-                            <label className="pl-2" htmlFor="flexRadioDefault1">
-                                1 dòng
-                            </label>
-                        </div>
-                        <div className="">
+                            <div className="w-32 max-w-xl rounded-md bg-white p-2 text-gray-300 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-blue-600 peer-checked:ring-blue-400 peer-checked:ring-offset-0">
+                                <div className="flex flex-col gap-1">
+                                    <div className="flex items-center justify-between">
+                                        <p className="text-sm font-semibold uppercase text-gray-500">1 dòng</p>
+                                        <FontAwesomeIcon icon={faCircleCheck} className="text-xl" />
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        <label className="cursor-pointer" htmlFor="lineNumber2">
                             <input
-                                className=""
                                 type="radio"
-                                name="flexRadioDefault"
-                                id="flexRadioDefault2"
+                                className="peer sr-only"
+                                name="lineNumber"
+                                id="lineNumber2"
                                 value="2"
                                 checked={lineNumber === '2'}
                                 onChange={(e) => handleChangeLineNumber(e.target.value)}
                             />
-                            <label className="pl-2" htmlFor="flexRadioDefault2">
-                                2 dòng
-                            </label>
-                        </div>
+                            <div className="w-32 max-w-xl rounded-md bg-white p-2 text-gray-300 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-blue-600 peer-checked:ring-blue-400 peer-checked:ring-offset-0">
+                                <div className="flex flex-col gap-1">
+                                    <div className="flex items-center justify-between">
+                                        <p className="text-sm font-semibold uppercase text-gray-500">2 dòng</p>
+                                        <FontAwesomeIcon icon={faCircleCheck} className="text-xl" />
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center border-t-gray-300 border-t">
                         <select
                             className="py-2 mr-4 rounded"
                             id="umbrella"
@@ -144,8 +158,8 @@ export default function Home() {
                             ))}
                         </select>
                     </div>
-                    <div className="border-t-gray-300 border-t">
-                        {lineNumber === '2' && <p className="font-bold text-center pt-2 ">Dòng 1</p>}
+                    <div className="border-t-gray-300 py-4 border-t">
+                        {lineNumber === '2' && <p className="font-bold text-center">Dòng 1</p>}
                         <EditContent
                             text={text1}
                             fontSize={fontSize1}
@@ -157,8 +171,8 @@ export default function Home() {
                     </div>
                     {lineNumber === '2' && (
                         <>
-                            <div className="border-t-gray-300 border-t">
-                                <p className="font-bold text-center pt-2 ">Dòng 2</p>
+                            <div className="border-t-gray-300 py-4 border-t">
+                                <p className="font-bold text-center">Dòng 2</p>
                                 <EditContent
                                     text={text2}
                                     fontSize={fontSize2}
@@ -169,32 +183,23 @@ export default function Home() {
                                 />
                             </div>
                             <div className="border-t-gray-300 border-t">
-                                <div className="flex items-center pb-2">
-                                    <label className="pr-6" htmlFor="letterSpacing">
+                                <div className="py-2 relative">
+                                    <label className="pr-6 block" htmlFor="letterSpacing">
                                         Khoảng cách 2 dòng:
                                     </label>
-                                    <div>
-                                        <input
-                                            type="number"
-                                            name="letterSpacing"
-                                            className="py-2 px-2 rounded"
-                                            placeholder=""
-                                            value={lineHeight}
-                                            min={-20}
-                                            max={20}
-                                            onChange={(e) => handleChangeLineHeight(e.target.value)}
-                                        />
-                                        <input
-                                            type="range"
-                                            name="letterSpacing"
-                                            className="py-2 rounded"
-                                            placeholder=""
-                                            value={lineHeight}
-                                            min={-20}
-                                            max={20}
-                                            onChange={(e) => handleChangeLineHeight(e.target.value)}
-                                        />
-                                    </div>
+                                    <span className="font-bold text-main absolute left-1/2 -translate-x-1/2">
+                                        {lineHeight}
+                                    </span>
+                                    <input
+                                        type="range"
+                                        name="letterSpacing"
+                                        className="rounded w-full mt-6"
+                                        placeholder=""
+                                        value={lineHeight}
+                                        min={-20}
+                                        max={20}
+                                        onChange={(e) => handleChangeLineHeight(e.target.value)}
+                                    />
                                 </div>
                             </div>
                         </>
